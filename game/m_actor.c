@@ -339,7 +339,6 @@ mmove_t actor_move_death2 = {FRAME_death201, FRAME_death213, actor_frames_death2
 void actor_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damage, vec3_t point)
 {
 	int		n;
-
 // check for gib
 	if (self->health <= -80)
 	{
@@ -352,7 +351,7 @@ void actor_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int damage
 		self->deadflag = DEAD_DEAD;
 		return;
 	}
-
+	gi.dprintf("\nDIE DIE DIE!");
 	if (self->deadflag == DEAD_DEAD)
 		return;
 

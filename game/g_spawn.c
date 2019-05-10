@@ -649,7 +649,7 @@ char *single_statusbar =
 "yb	-24 "
 
 // health
-"xv	0 "
+"xv	0 " //was "xv	0 "
 "hnum "
 "xv	50 "
 "pic 0 "

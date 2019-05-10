@@ -425,7 +425,7 @@ void M_Main_Draw (void)
 	M_DrawCursor( xoffset - 25, ystart + m_main_cursor * 40 + 11, (int)(cls.realtime / 100)%NUM_CURSOR_FRAMES );
 
 	re.DrawGetPicSize( &w, &h, "m_main_plaque" );
-	re.DrawPic( xoffset - 30 - w, ystart, "m_main_plaque" );
+	re.DrawPic(xoffset - 30 - w, ystart, "m_main_plaque" );
 
 	re.DrawPic( xoffset - 30 - w, ystart + h + 5, "m_main_logo" );
 }

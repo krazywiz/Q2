@@ -195,7 +195,8 @@ MOVETYPE_STEP,			// gravity, special edge handling
 MOVETYPE_FLY,
 MOVETYPE_TOSS,			// gravity
 MOVETYPE_FLYMISSILE,	// extra size to monsters
-MOVETYPE_BOUNCE
+MOVETYPE_BOUNCE,
+MOVETYPE_FLYRICOCHET
 } movetype_t;
 
 
@@ -727,7 +728,7 @@ void ThrowDebris (edict_t *self, char *modelname, float speed, vec3_t origin);
 qboolean fire_hit (edict_t *self, vec3_t aim, int damage, int kick);
 void fire_bullet (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int mod);
 void fire_shotgun (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int count, int mod);
-void fire_blaster (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, int effect, qboolean hyper);
+void fire_blaster (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, int effect, qboolean hyper, int bouncy);
 void fire_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, float timer, float damage_radius);
 void fire_grenade2 (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, float timer, float damage_radius, qboolean held);
 void fire_rocket (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, float damage_radius, int radius_damage);
@@ -851,7 +852,7 @@ typedef struct
 	int			max_grenades;
 	int			max_cells;
 	int			max_slugs;
-
+	
 	gitem_t		*weapon;
 	gitem_t		*lastweapon;
 
@@ -862,6 +863,7 @@ typedef struct
 	int			helpchanged;
 
 	qboolean	spectator;			// client is a spectator
+	qboolean homing_state;
 } client_persistant_t;
 
 // client data that stays across deathmatch respawns
@@ -1109,5 +1111,6 @@ struct edict_s
 	// common data blocks
 	moveinfo_t		moveinfo;
 	monsterinfo_t	monsterinfo;
+	char *nameOfClass;
 };
 

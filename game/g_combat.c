@@ -419,6 +419,22 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 	VectorNormalize(dir);
 
 // bonus damage for suprising a monster
+	if (attacker->client)
+	{
+		if (attacker->client->ps.gunindex == 75)
+		{
+			targ->nextthink = level.time + 2;
+			
+		}
+		if (!strcmp(targ->classname, "monster_parasite"))
+		{
+			int gundex = attacker->client->ps.gunindex;
+			if (gundex == 75 || gundex == 90 || gundex == 98 || gundex == 131)
+			{
+				damage *= 100;
+			}
+		}
+	}
 	if (!(dflags & DAMAGE_RADIUS) && (targ->svflags & SVF_MONSTER) && (attacker->client) && (!targ->enemy) && (targ->health > 0))
 		damage *= 2;
 

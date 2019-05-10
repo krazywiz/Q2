@@ -111,6 +111,7 @@ void AngleVectors (vec3_t angles, vec3_t forward, vec3_t right, vec3_t up)
 		forward[0] = cp*cy;
 		forward[1] = cp*sy;
 		forward[2] = -sp;
+		
 	}
 	if (right)
 	{
