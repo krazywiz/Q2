@@ -421,19 +421,64 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 // bonus damage for suprising a monster
 	if (attacker->client)
 	{
-		if (attacker->client->ps.gunindex == 75)
+		
+		
+		if (attacker->client->ps.gunindex == 75 || attacker->client->ps.gunindex == 90 || attacker->client->ps.gunindex == 98 || attacker->client->ps.gunindex == 131)
 		{
-			targ->nextthink = level.time + 2;
-			
+			targ->nextthink = level.time + 2; //shotgun
+			if (!strcmp(targ->classname, "monster_infantry"))
+			{
+				damage *= 1000;
+			}
 		}
+	
 		if (!strcmp(targ->classname, "monster_parasite"))
-		{
+		{//super shotgun
 			int gundex = attacker->client->ps.gunindex;
-			if (gundex == 75 || gundex == 90 || gundex == 98 || gundex == 131)
+			if (gundex == 79 || gundex == 104 || gundex == 100 || gundex == 115)
+			{
+				gi.dprintf("parasite die");
+				damage *= 100;
+			}
+		}
+
+		if (!strcmp(targ->classname, "monster_soldier"))
+		{
+			int gundex = attacker->client->ps.gunindex; //grenade launcher
+			if (gundex == 83 || gundex == 112 || gundex == 103 || gundex == 141)
+			{
+				gi.dprintf("soldier die");
+				damage *= 100;
+			}
+		}
+
+		if (!strcmp(targ->classname, "monster_soldier_light"))
+		{
+			int gundex = attacker->client->ps.gunindex; //machine gun
+			if (gundex == 82 || gundex == 106 || gundex == 91 || gundex == 118)
 			{
 				damage *= 100;
 			}
 		}
+
+		if (!strcmp(targ->classname, "monster_chick"))
+		{
+			int gundex = attacker->client->ps.gunindex; //rocket launcher
+			if (gundex == 115)
+			{
+				damage *= 100;
+			}
+		}
+
+		if (!strcmp(targ->classname, "monster_flipper"))
+		{
+			int gundex = attacker->client->ps.gunindex; //bfg
+			if (gundex == 146)
+			{
+				damage *= 100;
+			}
+		}
+
 	}
 	if (!(dflags & DAMAGE_RADIUS) && (targ->svflags & SVF_MONSTER) && (attacker->client) && (!targ->enemy) && (targ->health > 0))
 		damage *= 2;

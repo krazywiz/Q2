@@ -1053,6 +1053,7 @@ void Machinegun_Fire (edict_t *ent)
 	int			damage = 8;
 	int			kick = 2;
 	vec3_t		offset;
+	
 
 	if (!(ent->client->buttons & BUTTON_ATTACK))
 	{
