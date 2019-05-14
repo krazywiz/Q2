@@ -422,8 +422,8 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 	if (attacker->client)
 	{
 		
-		
-		if (attacker->client->ps.gunindex == 75 || attacker->client->ps.gunindex == 90 || attacker->client->ps.gunindex == 98 || attacker->client->ps.gunindex == 131)
+		gi.dprintf("%d\n", attacker->client->ps.gunindex);
+		if (attacker->client->ps.gunindex == 75 || attacker->client->ps.gunindex == 92 || attacker->client->ps.gunindex == 98 || attacker->client->ps.gunindex == 131)
 		{
 			targ->nextthink = level.time + 2; //shotgun
 			if (!strcmp(targ->classname, "monster_infantry"))
@@ -431,11 +431,12 @@ void T_Damage (edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir,
 				damage *= 1000;
 			}
 		}
-	
+
+
 		if (!strcmp(targ->classname, "monster_parasite"))
 		{//super shotgun
 			int gundex = attacker->client->ps.gunindex;
-			if (gundex == 79 || gundex == 104 || gundex == 100 || gundex == 115)
+			if (gundex == 79 || gundex == 104 || gundex == 100 || gundex == 115 || gundex == 101)
 			{
 				gi.dprintf("parasite die");
 				damage *= 100;
