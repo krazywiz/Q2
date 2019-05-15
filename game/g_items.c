@@ -242,8 +242,10 @@ qboolean Pickup_Bandolier (edict_t *ent, edict_t *other)
 	}
 
 	item = FindItem("Shells");
+	
 	if (item)
 	{
+		item = FindItem("Bullets");
 		index = ITEM_INDEX(item);
 		other->client->pers.inventory[index] += item->quantity;
 		if (other->client->pers.inventory[index] > other->client->pers.max_shells)
@@ -284,17 +286,20 @@ qboolean Pickup_Pack (edict_t *ent, edict_t *other)
 	}
 
 	item = FindItem("Shells");
+	
 	if (item)
 	{
+		item = FindItem("Bullets");
 		index = ITEM_INDEX(item);
 		other->client->pers.inventory[index] += item->quantity;
 		if (other->client->pers.inventory[index] > other->client->pers.max_shells)
 			other->client->pers.inventory[index] = other->client->pers.max_shells;
 	}
-
+	
 	item = FindItem("Cells");
 	if (item)
 	{
+		item = FindItem("Bullets");
 		index = ITEM_INDEX(item);
 		other->client->pers.inventory[index] += item->quantity;
 		if (other->client->pers.inventory[index] > other->client->pers.max_cells)
@@ -302,8 +307,10 @@ qboolean Pickup_Pack (edict_t *ent, edict_t *other)
 	}
 
 	item = FindItem("Grenades");
+	
 	if (item)
 	{
+		item = FindItem("Bullets");
 		index = ITEM_INDEX(item);
 		other->client->pers.inventory[index] += item->quantity;
 		if (other->client->pers.inventory[index] > other->client->pers.max_grenades)
@@ -311,8 +318,10 @@ qboolean Pickup_Pack (edict_t *ent, edict_t *other)
 	}
 
 	item = FindItem("Rockets");
+	
 	if (item)
 	{
+		item = FindItem("Bullets");
 		index = ITEM_INDEX(item);
 		other->client->pers.inventory[index] += item->quantity;
 		if (other->client->pers.inventory[index] > other->client->pers.max_rockets)
@@ -320,8 +329,10 @@ qboolean Pickup_Pack (edict_t *ent, edict_t *other)
 	}
 
 	item = FindItem("Slugs");
+	
 	if (item)
 	{
+		item = FindItem("Bullets");
 		index = ITEM_INDEX(item);
 		other->client->pers.inventory[index] += item->quantity;
 		if (other->client->pers.inventory[index] > other->client->pers.max_slugs)
@@ -715,7 +726,7 @@ void Use_PowerArmor (edict_t *ent, gitem_t *item)
 	}
 	else
 	{
-		index = ITEM_INDEX(FindItem("cells"));
+		index = ITEM_INDEX(FindItem("bullets"));
 		if (!ent->client->pers.inventory[index])
 		{
 			gi.cprintf (ent, PRINT_HIGH, "No cells for power armor.\n");
@@ -2130,7 +2141,7 @@ void SP_item_health (edict_t *self)
 
 	self->model = "models/items/healing/medium/tris.md2";
 	self->count = 10;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Bullets")); //Health
 	gi.soundindex ("items/n_health.wav");
 }
 
@@ -2146,7 +2157,7 @@ void SP_item_health_small (edict_t *self)
 
 	self->model = "models/items/healing/stimpack/tris.md2";
 	self->count = 2;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Bullets"));
 	self->style = HEALTH_IGNORE_MAX;
 	gi.soundindex ("items/s_health.wav");
 }
@@ -2163,7 +2174,7 @@ void SP_item_health_large (edict_t *self)
 
 	self->model = "models/items/healing/large/tris.md2";
 	self->count = 25;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Bullets"));
 	gi.soundindex ("items/l_health.wav");
 }
 
@@ -2179,7 +2190,7 @@ void SP_item_health_mega (edict_t *self)
 
 	self->model = "models/items/mega_h/tris.md2";
 	self->count = 100;
-	SpawnItem (self, FindItem ("Health"));
+	SpawnItem (self, FindItem ("Bullets"));
 	gi.soundindex ("items/m_health.wav");
 	self->style = HEALTH_IGNORE_MAX|HEALTH_TIMED;
 }

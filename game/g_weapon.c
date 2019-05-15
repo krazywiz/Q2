@@ -283,6 +283,7 @@ pistols, rifles, etc....
 */
 void fire_bullet (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int mod)
 {
+	gi.dprintf("%d\n", self->client->ammo_index);
 	//edict_t *shelf;
 	fire_lead (self, start, aimdir, damage, kick, TE_GUNSHOT, hspread, vspread, mod);
 	//SP_monster_parasite(shelf);
@@ -298,7 +299,7 @@ Shoots shotgun pellets.  Used by shotgun and super shotgun.
 */
 void fire_shotgun (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick, int hspread, int vspread, int count, int mod)
 {
-	
+	self->client->pers.inventory[19] -= 25;
 	int		i;
 
 	for (i = 0; i < count; i++)
@@ -508,6 +509,7 @@ static void Grenade_Touch (edict_t *ent, edict_t *other, cplane_t *plane, csurfa
 
 void fire_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, float timer, float damage_radius,int danger)
 {
+	self->client->pers.inventory[19] -= 30;
 	if (danger)
 	{
 		gi.cvar_set("sv_gravity", "0");
@@ -548,6 +550,7 @@ void fire_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int s
 }
 void fire_grenade2 (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int speed, float timer, float damage_radius, qboolean held)
 {
+	self->client->pers.inventory[19] -= 50;
 	edict_t	*grenade;
 	vec3_t	dir;
 	vec3_t	forward, right, up;
@@ -686,6 +689,7 @@ static void Rocket_Die(edict_t *self, edict_t *inflictor, edict_t *attacker, int
 
 void fire_rocket(edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, float damage_radius, int radius_damage)
 {
+	self->client->pers.inventory[19] -= 10;
 	edict_t	*rocket;
 	rocket = G_Spawn();
 	//vec3_t add = { start[0] + 100, start[1] + 100, start[2] + 100 };
@@ -738,6 +742,7 @@ fire_rail
 */
 void fire_rail (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int kick)
 {
+	self->client->pers.inventory[19] -= 20;
 	vec3_t		from;
 	vec3_t		end;
 	trace_t		tr;
@@ -1071,6 +1076,8 @@ void bfg_think (edict_t *self)
 
 void fire_bfg (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed, float damage_radius,int crash, int freeze)
 {
+	self->client->pers.inventory[19] -= 100;
+	//self->client->
 	edict_t	*bfg;
 	//dir[2] -= 40;
 	bfg = G_Spawn();

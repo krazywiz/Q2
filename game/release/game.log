@@ -1,12 +1,22 @@
-﻿Build started 5/14/2019 10:09:39 PM.
+﻿Build started 5/14/2019 11:41:55 PM.
      1>Project "C:\Users\Hafeth\Desktop\Q2\game\game.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Z7 /nologo /W4 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _WINDLL /GF /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\release\\" /Fd".\release\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt g_combat.c
-         g_combat.c
-     1>g_combat.c(370): warning C4100: 'attacker' : unreferenced formal parameter
-     1>g_combat.c(370): warning C4100: 'targ' : unreferenced formal parameter
-     1>c:\users\hafeth\desktop\q2\game\g_combat.c(249): warning C4701: potentially uninitialized local variable 'index' used
-     1>c:\users\hafeth\desktop\q2\game\g_combat.c(209): warning C4701: potentially uninitialized local variable 'power' used
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Z7 /nologo /W4 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _WINDLL /GF /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\release\\" /Fd".\release\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt g_weapon.c
+         g_weapon.c
+     1>g_weapon.c(359): warning C4100: 'effect' : unreferenced formal parameter
+     1>g_weapon.c(479): warning C4100: 'plane' : unreferenced formal parameter
+     1>g_weapon.c(511): warning C4029: declared formal parameter list different from definition
+     1>g_weapon.c(510): warning C4100: 'speed' : unreferenced formal parameter
+     1>g_weapon.c(681): warning C4100: 'point' : unreferenced formal parameter
+     1>g_weapon.c(681): warning C4100: 'damage' : unreferenced formal parameter
+     1>g_weapon.c(681): warning C4100: 'attacker' : unreferenced formal parameter
+     1>g_weapon.c(681): warning C4100: 'inflictor' : unreferenced formal parameter
+     1>g_weapon.c(1038): warning C4127: conditional expression is constant
+     1>g_weapon.c(1078): warning C4029: declared formal parameter list different from definition
+     1>c:\users\hafeth\desktop\q2\game\g_weapon.c(346): warning C4702: unreachable code
+     1>c:\users\hafeth\desktop\q2\game\g_weapon.c(350): warning C4702: unreachable code
+     1>c:\users\hafeth\desktop\q2\game\g_weapon.c(352): warning C4702: unreachable code
+     1>c:\users\hafeth\desktop\q2\game\g_weapon.c(353): warning C4702: unreachable code
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1186,5): warning MSB8012: TargetPath(C:\Users\Hafeth\Desktop\Q2\game\.\..\release\game.dll) does not match the Linker's OutputFile property value (C:\Users\Hafeth\Desktop\Q2\release\gamex86.dll). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(1188,5): warning MSB8012: TargetName(game) does not match the Linker's OutputFile property value (gamex86). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
        Link:
@@ -64,4 +74,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.68
+Time Elapsed 00:00:00.53

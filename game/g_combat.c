@@ -420,10 +420,10 @@ void T_Damage(edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir, 
 
 	// bonus damage for suprising a monster
 	if (attacker->client)
-	{//h
+	{
 
 		gi.dprintf("%d\n", attacker->client->ps.gunindex);
-		if (attacker->client->ps.gunindex == 75 || attacker->client->ps.gunindex == 92 || attacker->client->ps.gunindex == 98 || attacker->client->ps.gunindex == 131)
+		if (attacker->client->ps.gunindex == 75 || attacker->client->ps.gunindex == 92 || attacker->client->ps.gunindex == 98 || attacker->client->ps.gunindex == 76)
 		{
 			targ->nextthink = level.time + 2; //shotgun
 			if (!strcmp(targ->classname, "monster_infantry"))
@@ -446,7 +446,7 @@ void T_Damage(edict_t *targ, edict_t *inflictor, edict_t *attacker, vec3_t dir, 
 		if (!strcmp(targ->classname, "monster_soldier"))
 		{
 			int gundex = attacker->client->ps.gunindex; //grenade launcher
-			if (gundex == 83 || gundex == 112 || gundex == 103 || gundex == 141)
+			if (gundex == 83 || gundex == 112 || gundex == 103 || gundex == 82)
 			{
 				gi.dprintf("soldier die");
 				damage *= 100;

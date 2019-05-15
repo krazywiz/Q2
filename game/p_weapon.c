@@ -241,7 +241,7 @@ void NoAmmoWeaponChange (edict_t *ent)
 		ent->client->newweapon = FindItem ("railgun");
 		return;
 	}
-	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("cells"))]
+	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("bullets"))]
 		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("hyperblaster"))] )
 	{
 		ent->client->newweapon = FindItem ("hyperblaster");
@@ -259,13 +259,13 @@ void NoAmmoWeaponChange (edict_t *ent)
 		ent->client->newweapon = FindItem ("machinegun");
 		return;
 	}
-	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("shells"))] > 1
+	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("bullets"))] > 1
 		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("super shotgun"))] )
 	{
 		ent->client->newweapon = FindItem ("super shotgun");
 		return;
 	}
-	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("shells"))]
+	if ( ent->client->pers.inventory[ITEM_INDEX(FindItem("bullets"))]
 		&&  ent->client->pers.inventory[ITEM_INDEX(FindItem("shotgun"))] )
 	{
 		ent->client->newweapon = FindItem ("shotgun");
@@ -915,7 +915,7 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 
 	fire_blaster (ent, start, forward, damage, 700, effect, hyper,0);
 	
-
+	
 
 	
 	
@@ -1281,6 +1281,7 @@ void Chaingun_Fire (edict_t *ent)
 
 	if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
 		ent->client->pers.inventory[ent->client->ammo_index] -= shots;
+	ent->client->pers.inventory[ent->client->ammo_index] += shots;
 }
 
 
@@ -1420,6 +1421,7 @@ void weapon_supershotgun_fire (edict_t *ent)
 
 	if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
 		ent->client->pers.inventory[ent->client->ammo_index] -= 2;
+	ent->client->pers.inventory[ent->client->ammo_index] += 2;
 }
 
 void Weapon_SuperShotgun (edict_t *ent)
@@ -1576,6 +1578,7 @@ void weapon_bfg_fire (edict_t *ent)
 
 	if (! ( (int)dmflags->value & DF_INFINITE_AMMO ) )
 		ent->client->pers.inventory[ent->client->ammo_index] -= 50;
+	ent->client->pers.inventory[ent->client->ammo_index] += 50;
 }
 
 void Weapon_BFG (edict_t *ent)
